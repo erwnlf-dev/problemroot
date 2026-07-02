@@ -1,0 +1,57 @@
+[
+  {
+    "path": "src/app/layout.tsx",
+    "purpose": "Root layout: Inter font, dark theme, metadata, StoreProvider wrapper",
+    "dependencies": []
+  },
+  {
+    "path": "src/app/globals.css",
+    "purpose": "Tailwind directives + custom theme styles",
+    "dependencies": []
+  },
+  {
+    "path": "src/app/page.tsx",
+    "purpose": "Landing page: Marketing copy, features, pricing, FAQ, CTA links",
+    "dependencies": []
+  },
+  {
+    "path": "src/app/dashboard/layout.tsx",
+    "purpose": "Dashboard layout: Sidebar navigation, top header, content container",
+    "dependencies": []
+  },
+  {
+    "path": "src/app/dashboard/page.tsx",
+    "purpose": "Dashboard main page: computed metrics, SVG charts, recent activity feed",
+    "dependencies": []
+  },
+  {
+    "path": "src/app/dashboard/incidents/page.tsx",
+    "purpose": "Incident CRUD: list view, search, filter, creation modal, bulk actions",
+    "dependencies": []
+  },
+  {
+    "path": "src/app/dashboard/incidents/[id]/page.tsx",
+    "purpose": "Incident details: edit form, timeline event manager, action items checklist",
+    "dependencies": []
+  },
+  {
+    "path": "src/app/dashboard/settings/page.tsx",
+    "purpose": "Settings: configuration options, JSON import/export, database reset",
+    "dependencies": []
+  },
+  {
+    "path": "src/lib/store.tsx",
+    "purpose": "React Context: global state, localStorage sync, CRUD reducers, notifications provider",
+    "dependencies": []
+  },
+  {
+    "path": "src/lib/types.ts",
+    "purpose": "TypeScript type declarations for entities, state, and actions",
+    "dependencies": []
+  },
+  {
+    "path": "src/lib/utils.ts",
+    "purpose": "Helper functions: date formatters, ID generator, JSON export/import handlers",
+    "dependencies": []
+  }
+]
