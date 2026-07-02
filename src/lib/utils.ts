@@ -3,6 +3,18 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
+export function formatDistanceToNow(timestamp: number): string {
+  const diff = Date.now() - timestamp;
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  const days = Math.floor(hrs / 24);
+  return `${days}d ago`;
+}
+
+
 export function formatDate(timestamp: number): string {
   const date = new Date(timestamp);
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });

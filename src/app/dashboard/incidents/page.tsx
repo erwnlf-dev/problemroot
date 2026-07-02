@@ -372,7 +372,7 @@ export default function IncidentsPage() {
                 </td>
                 <td className="px-4 py-3">
                   <a
-                    href={`/dashboard/incidents/${inc.id}`}
+                    href={`/dashboard/incidents/detail?id=${inc.id}`}
                     className="block"
                   >
                     <p className="text-sm font-medium text-[#f7f8f8] hover:text-[#7170ff] transition-colors line-clamp-1">

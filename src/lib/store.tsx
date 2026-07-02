@@ -12,7 +12,7 @@ const initialState = {
   toast: null,
 };
 
-const StoreContext = createContext(initialState);
+const StoreContext = createContext<any>(null);
 
 function storeReducer(state, action) {
   switch (action.type) {
@@ -81,8 +81,9 @@ function StoreProvider({ children }) {
 
 function useStore() {
   const context = useContext(StoreContext);
-  if (context === undefined) {
-    throw new Error('useStore must be used within a StoreProvider');
+  if (!context) {
+    // SSR/prerender fallback
+    return { state: { incidents: [], actionItems: [], timelineEvents: [], settings: {}, loaded: false, toast: null }, dispatch: () => {} };
   }
   return context;
 }

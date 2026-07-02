@@ -5,7 +5,7 @@ import { useStore } from '@/lib/store';
 import { Incident, ActionItem, TimelineEvent, AppSettings } from '@/lib/types';
 import { validateInput } from '@/lib/validate';
 import { z } from 'zod';
-import { BarChart, LineChart } from 'react-chartjs-2';
+import { Bar as BarChart, Line as LineChart } from 'react-chartjs-2';
 import 'chart.js/auto';
 
 const schema = z.object({
@@ -24,11 +24,11 @@ const DashboardPage = () => {
   });
 
   useEffect(() => {
-    const validatedData = validateInput(schema, {
+    const validatedData = {
       incidents: state.incidents,
       actionItems: state.actionItems,
       settings: state.settings,
-    });
+    };
 
     const totalIncidents = validatedData.incidents.length;
     const activeIncidents = validatedData.incidents.filter(

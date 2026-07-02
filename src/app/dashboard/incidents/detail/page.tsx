@@ -2,7 +2,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { Suspense } from 'react';
 import { useStore } from '@/lib/store';
 import type { Incident, ActionItem, TimelineEvent, IncidentStatus, Severity, ActionStatus } from '@/lib/types';
 import {
@@ -42,11 +43,11 @@ function genId() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
 
-export default function IncidentDetailPage() {
-  const params = useParams();
+function IncidentDetailContent() {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const { state, dispatch } = useStore();
-  const id = params.id as string;
+  const id = searchParams.get('id') as string;
 
   const incident = state.incidents.find((i) => i.id === id) ?? null;
   const actionItems = state.actionItems.filter((a) => a.incidentId === id);
@@ -826,5 +827,13 @@ export default function IncidentDetailPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function IncidentDetailPage() {
+  return (
+    <Suspense fallback={<div className="p-6 text-zinc-400">Loading...</div>}>
+      <IncidentDetailContent />
+    </Suspense>
   );
 }

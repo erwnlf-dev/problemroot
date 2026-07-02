@@ -4,8 +4,8 @@ import { Inter } from 'next/font/google';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Sidebar, Header, HelpWidget } from '@/components';
-import { useStore } from '@/store';
-import { AppSettings } from '@/types';
+import { useStore } from '@/lib/store';
+import { AppSettings } from '@/lib/types';
 
 const inter = Inter({ subsets: ['latin'] });
 

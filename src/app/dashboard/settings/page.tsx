@@ -15,7 +15,8 @@ const settingsSchema = z.object({
 });
 
 function SettingsPage() {
-  const [{ appSettings }, dispatch] = useStore();
+  const { state, dispatch } = useStore();
+  const appSettings = state.settings || {};
   const [formData, setFormData] = useState(appSettings);
   const [errors, setErrors] = useState({} as Record<string, string>);
 
@@ -26,7 +27,7 @@ function SettingsPage() {
 
   const validate = () => {
     try {
-      validateInput(settingsSchema, formData);
+      settingsSchema.parse(formData);
       setErrors({});
       return true;
     } catch (error) {
@@ -62,7 +63,7 @@ function SettingsPage() {
       reader.onload = (event) => {
         try {
           const data = JSON.parse(event.target?.result as string);
-          validateInput(settingsSchema, data.appSettings);
+          settingsSchema.parse(data.appSettings);
           dispatch({ type: 'SEED', payload: data });
           alert('Settings imported');
         } catch (error) {
